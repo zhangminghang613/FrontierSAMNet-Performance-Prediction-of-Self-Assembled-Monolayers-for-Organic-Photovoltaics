@@ -1,6 +1,6 @@
-# FrontierSAMNet: Performance Prediction and Virtual Screening of Self-Assembled Monolayers for Organic Photovoltaics
+# FrontierSAMNet: Performance Prediction of Self-Assembled Monolayers for Organic Photovoltaics
 
-This project is designed for research on self-assembled monolayer (SAM) materials for organic photovoltaics (OPVs). It provides a complete workflow covering raw experimental data cleaning, group-based dataset splitting by SAM, molecular representation pretraining, multimodal multi-task modeling, performance prediction, uncertainty calibration, structural pattern analysis, and virtual candidate screening.
+This project is designed for research on self-assembled monolayer (SAM) materials for organic photovoltaics (OPVs). It provides a complete workflow covering raw experimental data cleaning, group-based dataset splitting by SAM, molecular representation pretraining, multimodal multi-task modeling, performance prediction, uncertainty calibration, structural pattern analysis, and real-SAM fragment analysis.
 
 The model simultaneously predicts four photovoltaic performance metrics:
 
@@ -52,7 +52,6 @@ The three branches are integrated through a gated fusion module, followed by a m
 ├── 09_interpretability.py
 ├── 10_frontiersamnet_context_structure_occlusion.py
 ├── 11_fragment_analysis.py
-├── 12_virtual_sam_screening.py
 ├── sam_core.py
 ├── config.yaml
 ├── con_data.xlsx
@@ -192,9 +191,9 @@ python 07_frontiersamnet_module_ablation.py --variants tabular_only,graph_smiles
 python 07_frontiersamnet_module_ablation.py --mc-dropout-passes 48
 ```
 
-### 8. Candidate Material Aggregation and Ranking
+### 8. Observed-SAM Prediction Aggregation
 
-`08_candidate_screening.py` aggregates existing prediction results by SAM name and SMILES and ranks the candidate materials according to the twice-the-uncertainty lower bound for PCE, `pce_lcb_2sigma`.
+`08_candidate_screening.py` aggregates prediction results for already observed SAMs by name and SMILES. 
 
 ### 9. Feature and Process Condition Interpretation
 
@@ -224,12 +223,5 @@ Run the fragment and design rule analysis:
 python 11_fragment_analysis.py
 ```
 
-This workflow includes SMARTS/BRICS fragment analysis, descriptor shifts, molecular space analysis, and representative structure screening.
+This workflow includes SMARTS/BRICS fragment analysis, design-descriptor calculation, high-/low-PCE grouping, and exact C2/C3/C4 spacer audits.
 
-### 12. Virtual SAM Screening
-
-Run model inference and candidate ranking:
-
-```powershell
-python 12_virtual_sam_screening.py
-```
