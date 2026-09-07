@@ -223,5 +223,5 @@ Run the fragment and design rule analysis:
 python 11_fragment_analysis.py
 ```
 
-This workflow includes SMARTS/BRICS fragment analysis, design-descriptor calculation, high-/low-PCE grouping, and exact C2/C3/C4 spacer audits.
+This workflow includes SMARTS/BRICS fragment analysis, design-descriptor calculation, and high-/low-PCE grouping.
 
